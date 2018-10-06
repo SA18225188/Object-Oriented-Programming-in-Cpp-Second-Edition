@@ -1,0 +1,10 @@
+class c{
+	public:
+		void set(const String& n)
+		{
+			name = n;
+		}
+		const String& get() const {return name;}
+	private:
+		String name;
+};
