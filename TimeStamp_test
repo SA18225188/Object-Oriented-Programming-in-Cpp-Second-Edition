@@ -1,10 +1,12 @@
-class c{
-	public:
-		void set(const String& n)
-		{
-			name = n;
-		}
-		const String& get() const {return name;}
-	private:
-		String name;
-};
+#include <iostream>
+#include "TimeStamp.h"
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main() {
+	TimeStamp ts;
+	ts.set(0);
+	cout<<ts.get()<<endl;
+	cout<<ts.getYear()<< " "<< ts.getMonth()<< " "<<ts.getDay()<<endl; 
+	return 0;
+}
