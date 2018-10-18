@@ -1,0 +1,126 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Film {
+public:
+	void store_title(const string& t)
+	{
+		title = t;
+	}
+	void store_title(const char* t)
+	{
+		title = t;
+	}
+	void store_director(const string& d)
+	{
+		director = d;
+	}
+	void store_director(const char* d)
+	{
+		director = d;
+	}
+	void store_time(int t)
+	{
+		time = t;
+	}
+	void store_quality(int q)
+	{
+		quality = q;
+	}
+	void output() const;
+private:
+	string title;
+	string director;
+	int time;
+	int quality;
+};
+
+void Film::output() const {
+	cout << "Title:" << title << endl;
+	cout << "Time:" << time << endl;
+	cout << "Director:" << director << endl;
+	cout << "Quality：";
+	for (int i = 1; i <= quality; i++)
+	{
+		cout << "*";
+	}
+	cout << endl;
+}
+
+class DirectorCut : public Film {//记住要publi继承
+public:
+	void store_change_time(int t)
+	{
+		change_time = t;
+	}
+	void store_change_content(const string& s)
+	{
+		content = s;
+	}
+	void store_change_content(const char* s)
+	{
+		content = s;
+	}
+	void output() const;
+private:
+	int change_time;
+	string content;
+};
+
+void DirectorCut::output() const
+{
+	Film::output();
+	cout << "Change time:" << change_time << endl;
+	cout << "content:" << content << endl;
+}
+
+class ForeignFilm : public Film {
+public:
+	void store_language(const string& L)
+	{
+		language = L;
+	}
+	void output() const;
+private:
+	string language;
+};
+void ForeignFilm::output() const
+{
+	Film::output();
+	cout << "Language:" << language << endl;
+}
+
+int main()
+{
+	Film f;//类的第一字母尽量大写
+	f.store_title("Before Sunrise");
+	f.store_director("Richard Linklater");
+	f.store_time(120);
+	f.store_quality(3);
+	cout << "film................................." << endl;
+	f.output();
+	cout << endl;
+
+	DirectorCut d;
+	d.store_title("yigekiabgge");
+	d.store_director("ffhja");
+	d.store_time(110);
+	d.store_quality(2);
+	d.store_change_time(130);
+	d.store_change_content("fhadifhahfuka");
+	cout << "directorcut............................" << endl;
+	d.output();
+	cout << endl;
+
+	ForeignFilm ff;
+	ff.store_title("Before Sunrise");
+	ff.store_director("Richard Linklater");
+	ff.store_time(120);
+	ff.store_quality(3);
+	ff.store_language("Chinese");
+	cout << "foreignfilm................................." << endl;
+	ff.output();
+	cout << endl;
+}
